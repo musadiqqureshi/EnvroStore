@@ -17,8 +17,8 @@ export default function ProductsPage() {
 
   if (isLoading) {
     return (
-      <div className="flex h-[calc(100vh-4rem)] items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin text-primary" />
+      <div className="flex h-[calc(100vh-4rem)] items-center justify-center bg-gradient-to-b from-slate-50 to-white">
+        <Loader2 className="h-8 w-8 animate-spin text-slate-600" />
       </div>
     );
   }
@@ -36,52 +36,61 @@ export default function ProductsPage() {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-muted/50">
-      <div className="container py-8">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        className="container py-12"
+      >
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mb-8 space-y-4"
+          className="mx-auto max-w-2xl text-center mb-12"
         >
-          <h1 className="text-4xl font-bold">Our Products</h1>
-          <p className="text-muted-foreground max-w-2xl">
-            Discover our curated collection of eco-friendly products. Each item is carefully
-            selected to help reduce environmental impact while maintaining quality and style.
+          <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl mb-4">
+            Our Products
+          </h1>
+          <p className="text-lg text-slate-600">
+            Discover our curated collection of sustainable products.
+            Each item is carefully selected to help reduce environmental impact.
           </p>
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center">
+        </motion.div>
+
+        <div className="mb-8 space-y-4 sm:space-y-0 sm:flex sm:items-center sm:justify-between">
+          <div className="relative max-w-xs">
             <Input
               placeholder="Search products..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="max-w-sm"
+              className="pl-4 pr-10 shadow-sm"
             />
-            <div className="flex gap-2 overflow-x-auto pb-2 sm:pb-0">
-              <Button
-                variant={selectedCategory === null ? "default" : "outline"}
-                onClick={() => setSelectedCategory(null)}
-                className="shrink-0"
-              >
-                All
-              </Button>
-              {categories.map((category) => (
-                <Button
-                  key={category}
-                  variant={selectedCategory === category ? "default" : "outline"}
-                  onClick={() => setSelectedCategory(category)}
-                  className="shrink-0"
-                >
-                  {category}
-                </Button>
-              ))}
-            </div>
           </div>
-        </motion.div>
+          <div className="flex gap-2 overflow-x-auto pb-2 sm:pb-0 sm:justify-end">
+            <Button
+              variant={selectedCategory === null ? "default" : "outline"}
+              onClick={() => setSelectedCategory(null)}
+              className="shrink-0 shadow-sm"
+            >
+              All
+            </Button>
+            {categories.map((category) => (
+              <Button
+                key={category}
+                variant={selectedCategory === category ? "default" : "outline"}
+                onClick={() => setSelectedCategory(category)}
+                className="shrink-0 shadow-sm"
+              >
+                {category}
+              </Button>
+            ))}
+          </div>
+        </div>
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
-          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+          className="grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
         >
           {filteredProducts?.map((product, index) => (
             <motion.div
@@ -96,11 +105,15 @@ export default function ProductsPage() {
         </motion.div>
 
         {filteredProducts?.length === 0 && (
-          <div className="mt-8 text-center text-muted-foreground">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="mt-12 text-center text-slate-600"
+          >
             No products found matching your criteria.
-          </div>
+          </motion.div>
         )}
-      </div>
+      </motion.div>
     </div>
   );
 }
