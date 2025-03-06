@@ -17,8 +17,8 @@ export default function ProductsPage() {
 
   if (isLoading) {
     return (
-      <div className="flex h-[calc(100vh-4rem)] items-center justify-center bg-gradient-to-b from-slate-50 to-white">
-        <Loader2 className="h-8 w-8 animate-spin text-slate-600" />
+      <div className="flex h-[calc(100vh-4rem)] items-center justify-center gradient-bg">
+        <Loader2 className="h-8 w-8 animate-spin text-white" />
       </div>
     );
   }
@@ -36,55 +36,59 @@ export default function ProductsPage() {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100">
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="container py-12"
-      >
+    <div className="min-h-screen">
+      <div className="gradient-bg py-20">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="mx-auto max-w-2xl text-center mb-12"
+          className="container"
         >
-          <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl mb-4">
-            Our Products
-          </h1>
-          <p className="text-lg text-slate-600">
-            Discover our curated collection of sustainable products.
-            Each item is carefully selected to help reduce environmental impact.
-          </p>
+          <div className="max-w-3xl mx-auto text-center text-white">
+            <h1 className="text-5xl font-bold mb-6">Our Products</h1>
+            <p className="text-xl opacity-90">
+              Discover our curated collection of sustainable products.
+              Each item is carefully selected to help reduce environmental impact.
+            </p>
+          </div>
         </motion.div>
+      </div>
 
-        <div className="mb-8 space-y-4 sm:space-y-0 sm:flex sm:items-center sm:justify-between">
-          <div className="relative max-w-xs">
-            <Input
-              placeholder="Search products..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-4 pr-10 shadow-sm"
-            />
-          </div>
-          <div className="flex gap-2 overflow-x-auto pb-2 sm:pb-0 sm:justify-end">
-            <Button
-              variant={selectedCategory === null ? "default" : "outline"}
-              onClick={() => setSelectedCategory(null)}
-              className="shrink-0 shadow-sm"
-            >
-              All
-            </Button>
-            {categories.map((category) => (
+      <div className="container -mt-8">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="bg-white rounded-xl shadow-lg p-6 mb-8"
+        >
+          <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+            <div className="w-full md:w-auto">
+              <Input
+                placeholder="Search products..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full md:w-[300px] shadow-sm"
+              />
+            </div>
+            <div className="flex gap-2 overflow-x-auto pb-2 md:pb-0 w-full md:w-auto justify-start md:justify-end">
               <Button
-                key={category}
-                variant={selectedCategory === category ? "default" : "outline"}
-                onClick={() => setSelectedCategory(category)}
-                className="shrink-0 shadow-sm"
+                variant={selectedCategory === null ? "default" : "outline"}
+                onClick={() => setSelectedCategory(null)}
+                className="shrink-0 shadow-sm rounded-full px-6"
               >
-                {category}
+                All
               </Button>
-            ))}
+              {categories.map((category) => (
+                <Button
+                  key={category}
+                  variant={selectedCategory === category ? "default" : "outline"}
+                  onClick={() => setSelectedCategory(category)}
+                  className="shrink-0 shadow-sm rounded-full px-6"
+                >
+                  {category}
+                </Button>
+              ))}
+            </div>
           </div>
-        </div>
+        </motion.div>
 
         <motion.div
           initial={{ opacity: 0 }}
@@ -110,10 +114,20 @@ export default function ProductsPage() {
             animate={{ opacity: 1 }}
             className="mt-12 text-center text-slate-600"
           >
-            No products found matching your criteria.
+            <p className="text-xl">No products found matching your criteria.</p>
+            <Button
+              variant="link"
+              onClick={() => {
+                setSearchTerm("");
+                setSelectedCategory(null);
+              }}
+              className="mt-2"
+            >
+              Clear filters
+            </Button>
           </motion.div>
         )}
-      </motion.div>
+      </div>
     </div>
   );
 }
