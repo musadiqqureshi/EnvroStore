@@ -57,7 +57,7 @@ export default function ProductsPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white rounded-xl shadow-lg p-6 mb-8"
+          className="bg-white/5 backdrop-blur-lg rounded-xl border border-white/10 shadow-lg p-6 mb-8"
         >
           <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
             <div className="w-full md:w-auto">
@@ -65,14 +65,14 @@ export default function ProductsPage() {
                 placeholder="Search products..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full md:w-[300px] shadow-sm"
+                className="w-full md:w-[300px] bg-white/10 border-white/20 text-white placeholder:text-white/60"
               />
             </div>
             <div className="flex gap-2 overflow-x-auto pb-2 md:pb-0 w-full md:w-auto justify-start md:justify-end">
               <Button
                 variant={selectedCategory === null ? "default" : "outline"}
                 onClick={() => setSelectedCategory(null)}
-                className="shrink-0 shadow-sm rounded-full px-6"
+                className="shrink-0 shadow-sm rounded-full px-6 hover:bg-purple-500 hover:text-white"
               >
                 All
               </Button>
@@ -81,7 +81,7 @@ export default function ProductsPage() {
                   key={category}
                   variant={selectedCategory === category ? "default" : "outline"}
                   onClick={() => setSelectedCategory(category)}
-                  className="shrink-0 shadow-sm rounded-full px-6"
+                  className="shrink-0 shadow-sm rounded-full px-6 hover:bg-purple-500 hover:text-white"
                 >
                   {category}
                 </Button>
@@ -112,7 +112,7 @@ export default function ProductsPage() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="mt-12 text-center text-slate-600"
+            className="mt-12 text-center text-slate-300"
           >
             <p className="text-xl">No products found matching your criteria.</p>
             <Button
@@ -121,7 +121,7 @@ export default function ProductsPage() {
                 setSearchTerm("");
                 setSelectedCategory(null);
               }}
-              className="mt-2"
+              className="mt-2 text-purple-400 hover:text-purple-300"
             >
               Clear filters
             </Button>

@@ -37,7 +37,7 @@ export default function ProductCard({ product }: { product: Product }) {
   };
 
   return (
-    <Card className="hover-card h-full flex flex-col bg-white overflow-hidden">
+    <Card className="hover-card h-full flex flex-col bg-white/5 overflow-hidden">
       <CardContent className="p-0">
         <Link href={`/products/${product.id}`}>
           <div className="relative group aspect-square">
@@ -59,15 +59,15 @@ export default function ProductCard({ product }: { product: Product }) {
         </Link>
 
         <div className="p-5">
-          <h3 className="font-semibold text-lg line-clamp-1">{product.name}</h3>
-          <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
+          <h3 className="font-semibold text-lg line-clamp-1 text-white">{product.name}</h3>
+          <p className="mt-2 text-sm text-white/70 line-clamp-2">
             {product.description}
           </p>
           <div className="mt-4 flex items-center justify-between">
-            <span className="text-lg font-bold text-primary">
+            <span className="text-lg font-bold text-purple-400">
               ${parseFloat(product.price.toString()).toFixed(2)}
             </span>
-            <span className="text-sm text-muted-foreground">
+            <span className="text-sm text-white/60">
               {product.stock} in stock
             </span>
           </div>
@@ -76,7 +76,7 @@ export default function ProductCard({ product }: { product: Product }) {
 
       <CardFooter className="mt-auto p-5 pt-0">
         <Button
-          className="w-full rounded-full font-medium"
+          className="w-full rounded-full font-medium bg-purple-600 hover:bg-purple-500"
           onClick={addToCart}
           disabled={!user || product.stock === 0}
         >
