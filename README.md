@@ -94,7 +94,7 @@ EnvroStore/
 
 ## UI/UX Features 🎨
 
-- **Gradient Backgrounds**: Beautiful gradient transitions
+- **Gradient Backgrounds**: Beautiful gradient transitions from deep purple to vibrant indigo
 - **Smooth Animations**: Enhanced user experience with motion effects
 - **Responsive Design**: Seamless experience across all devices
 - **Dark Theme**: Modern, eye-friendly dark mode design
