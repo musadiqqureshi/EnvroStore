@@ -13,16 +13,27 @@
 }
 
 .gradient-bg {
-  background: linear-gradient(135deg, #FEC194 0%, #FF0061 100%);
+  background: linear-gradient(135deg, #2D1950 0%, #4C1D95 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-card {
+  background: linear-gradient(135deg, rgba(74, 47, 189, 0.05) 0%, rgba(99, 55, 255, 0.05) 100%);
 }
 
 .hover-card {
-  transition: all 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
 }
 
 .hover-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  transform: translateY(-8px);
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 25px 30px -10px rgba(0, 0, 0, 0.3);
 }
 
 /* Add smooth scrolling */
@@ -31,16 +42,34 @@ html {
 }
 
 /* Improve button hover effects */
-.rounded-full {
-  transition: transform 0.2s ease;
+.button-glow {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
 }
 
-.rounded-full:hover {
-  transform: translateY(-2px);
+.button-glow::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.button-glow:hover::after {
+  opacity: 1;
 }
 
 /* Add shimmer effect to gradients */
-.gradient-bg::before {
+.gradient-shimmer {
+  position: relative;
+}
+
+.gradient-shimmer::before {
   content: '';
   position: absolute;
   top: 0;
@@ -50,11 +79,11 @@ html {
   background: linear-gradient(
     45deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.05) 50%,
     transparent 100%
   );
   background-size: 200% 200%;
-  animation: shimmer 3s linear infinite;
+  animation: shimmer 6s linear infinite;
 }
 
 @keyframes shimmer {
@@ -64,4 +93,11 @@ html {
   100% {
     background-position: 200% 0;
   }
+}
+
+/* Glass effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
 }
