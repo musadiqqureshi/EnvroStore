@@ -55,7 +55,7 @@ A modern, eco-friendly e-commerce platform designed to provide a sustainable sho
 ## Project Structure 📁
 
 ```
-EnvroStore/
+EnviroStore/
 ├── client/               # Frontend React application
 │   ├── src/
 │   │   ├── components/   # Reusable UI components
@@ -99,6 +99,20 @@ EnvroStore/
 - **Responsive Design**: Seamless experience across all devices
 - **Dark Theme**: Modern, eye-friendly dark mode design
 - **Interactive Elements**: Hover effects and smooth transitions
+
+### Dark Theme Implementation
+- Custom color palette optimized for dark mode
+- Carefully selected contrast ratios for readability
+- Subtle gradients and glass effects for depth
+- Smooth transitions between states
+
+### Responsive Features
+- Mobile-first design approach
+- Flexible grid layouts
+- Adaptive typography
+- Touch-friendly interactions
+- Optimized images and assets
+
 
 ## Contributing 🤝
 
